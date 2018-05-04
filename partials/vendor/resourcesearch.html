@@ -23,9 +23,9 @@
 		<h4 style="color: #337ab7">Search Your Resource :</h4>
 		<div class="col-sm-3">
 
-			<input type="text" class="form-control" ng-model="search.skills"
-				placeholder="Skills">
+			<oi-select ng-model="search.skills" multiple oi-options="v for v in skills"  placeholder="Skills Ex:html"required>
 
+              </oi-select>	
 		</div>
 		<div class="col-sm-3">
 			<input type="text" class="form-control" ng-model="search.jobCategory"
@@ -54,71 +54,83 @@
 
 			<h3>Set your filter:</h3>
 			<div>
+					<uib-accordion close-others="oneAtATime">
 
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Location">
+						<uib-accordion-heading> Location<i
+							class="pull-right glyphicon"
+							ng-click="locationfunc()"
+							ng-class="{'glyphicon glyphicon-minus': status.Location, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
 
-				<uib-accordion close-others="oneAtATime">
+						<ul class=" list-group" ng-repeat="x in location">
+							<input type="checkbox">&nbsp;{{x.location}}
+						</ul>
+					</div>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Job ">
+						<uib-accordion-heading> Job Category <i
+							class="pull-right glyphicon"
+							ng-click="jobcategoryfunc()"
+							ng-class="{'glyphicon glyphicon-minus': status.Job , 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="c in Jobc">
+							<input type="checkbox">&nbsp;{{c.jobCategory}}
+						</ul>
+					</div>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Skills">
+						<uib-accordion-heading> Skills <i
+							class="pull-right glyphicon"
+							ng-click="skillfunc()"
+							ng-class="{'glyphicon glyphicon-minus': status.Skills, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="s in skills">
+							<input type="checkbox">&nbsp;{{s.name}}
+						</ul>
+					</div>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Experience">
+						<uib-accordion-heading> Experience <i
+							class="pull-right glyphicon"
+							ng-click="experiencefunc()"
+							ng-class="{'glyphicon glyphicon-minus': status.Experience, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="e in experience">
+							<input type="checkbox">&nbsp;{{e.experience}}
+						</ul>
+					</div>
 
-				<div uib-accordion-group class="panel-default"
-					is-open="status.Location">
-					<uib-accordion-heading> Location<i
-						class="pull-right glyphicon"
-						ng-class="{'glyphicon glyphicon-minus': status.Location, 'glyphicon glyphicon-plus': !status.open}"></i>
-					</uib-accordion-heading>
-
-					<ul class=" list-group" ng-repeat="x in States">
-						<input type="checkbox">&nbsp;{{x}}
-					</ul>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.company">
+						<uib-accordion-heading> Top Vendors <i
+							class="pull-right glyphicon"
+							ng-click="companyfunc()"
+							ng-class="{'glyphicon glyphicon-minus': status.company, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="tc in company">
+							<input type="checkbox">&nbsp;{{tc.company}}
+						</ul>
+					</div>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.budget">
+						<uib-accordion-heading> Budget <i
+							class="pull-right glyphicon"
+							ng-click="budgetfunc()"
+							ng-class="{'glyphicon glyphicon-minus': status.budget, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="bd in budget">
+							<input type="checkbox">&nbsp;{{bd.budget}}
+						</ul>
+					</div>
+					<br>
+					<center>
+						<button type="submit" class=" btn primary ">Clear
+							filters</button>
+						<button type="submit" class=" btn primary ">Submit</button>
+					</center>
 				</div>
-				<div uib-accordion-group class="panel-default" is-open="status.Job ">
-					<uib-accordion-heading> Job Category <i
-						class="pull-right glyphicon"
-						ng-class="{'glyphicon glyphicon-minus': status.Job , 'glyphicon glyphicon-plus': !status.open}"></i>
-					</uib-accordion-heading>
-					<ul class=" list-group" ng-repeat="c in Jobc">
-						<input type="checkbox">&nbsp;{{c}}
-					</ul>
-				</div>
-				<div uib-accordion-group class="panel-default"
-					is-open="status.Skills">
-					<uib-accordion-heading> Skills <i
-						class="pull-right glyphicon"
-						ng-class="{'glyphicon glyphicon-minus': status.Skills, 'glyphicon glyphicon-plus': !status.open}"></i>
-					</uib-accordion-heading>
-					<ul class=" list-group" ng-repeat="s in skills">
-						<input type="checkbox">&nbsp;{{s}}
-					</ul>
-				</div>
-				<div uib-accordion-group class="panel-default"
-					is-open="status.Experience">
-					<uib-accordion-heading> Experience <i
-						class="pull-right glyphicon"
-						ng-class="{'glyphicon glyphicon-minus': status.Experience, 'glyphicon glyphicon-plus': !status.open}"></i>
-					</uib-accordion-heading>
-					<ul class=" list-group" ng-repeat="e in experience">
-						<input type="checkbox">&nbsp;{{e}}
-					</ul>
-				</div>
-
-				<div uib-accordion-group class="panel-default"
-					is-open="status.company">
-					<uib-accordion-heading> Top Companies <i
-						class="pull-right glyphicon"
-						ng-class="{'glyphicon glyphicon-minus': status.company, 'glyphicon glyphicon-plus': !status.open}"></i>
-					</uib-accordion-heading>
-					<ul class=" list-group" ng-repeat="tc in company">
-						<input type="checkbox">&nbsp;{{tc}}
-					</ul>
-				</div>
-
-
-
-
-				<br>
-				<center>
-					<button type="submit" class=" btn primary ">Clear filters</button>
-					<button type="submit" class=" btn primary ">Submit</button>
-				</center>
-			</div>
 
 
 		</div>

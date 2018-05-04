@@ -72,6 +72,10 @@ resourceApp.controller('vendorreqlistCtrl',
 					$scope.company = [ "TCS", "Tech M", "Oracle", "IBM",
 							"Ojas", "HCL", "Wipro", "Info-tech", "CapGemini",
 							"Persistant", "Virtusa", "Infosys" ]*/
+						$scope.skills = [ "java", "jsp", "servlets", "Spring",
+							"Html", "Css", "Bootstrap", "Angularjs", "Nodejs",
+							"Php", "Phyton", "MySQL", "MongoDB", "Oracle",
+							"Sql Server" ];
 
 					$scope.postareq = function() {
 						debugger;

@@ -448,6 +448,12 @@ resourceApp.config(
 					cache: false,
 					controller: 'vendorupdateresourceCtrl'
 				})
+				.state('vendor.resourcesummary',{
+					url: '/resourcesummary/:resourceId',
+					templateUrl: 'partials/vendor/vendorresourcesummary.html',
+					cache: false,
+					controller: 'vendorupdateresourceCtrl'
+				})
 				.state('vendor.resourceMap',{
 					url:'/vendorresourceMap',
 					templateUrl:'partials/vendor/vendorresourcemaplist.html',

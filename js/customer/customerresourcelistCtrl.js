@@ -5,7 +5,7 @@ resourceApp.controller('customerresourcelistCtrl',["$scope","$state","$statePara
 		
 		$scope.resource = {};
 	})
-	
+	/*
 	$scope.States=["Hyderabad","Vijayawada","Vizag","Bangalore","Chennai","Madurai","Kolkata","Pune","Mumbai","Noida","Delhi","Jaipur","Darjeeling","Kerala"];
 
 	
@@ -14,10 +14,10 @@ resourceApp.controller('customerresourcelistCtrl',["$scope","$state","$statePara
 		
 		"Senior Database Administrator","Senior Programmer","Senior Security Specialist","Senior Web Developer","Software Architect","Systems Designer","Software Developer",
 		"Web Administrator","Web Developer"];
-		$scope.skills=["java","jsp","servlets","Spring","Html","Css","Bootstrap","Angularjs","Nodejs","Php","Phyton","MySQL","MongoDB","Oracle","Sql Server"];
-		$scope.experience=["0-1 years","1-2 years","2-3 years","3-4 years","4-5 years","5-6 years","more"];
+	*/	$scope.skills=["java","jsp","servlets","Spring","Html","Css","Bootstrap","Angularjs","Nodejs","Php","Phyton","MySQL","MongoDB","Oracle","Sql Server"];
+		/*$scope.experience=["0-1 years","1-2 years","2-3 years","3-4 years","4-5 years","5-6 years","more"];
 		$scope.company=["TCS","Tech M","Oracle","IBM","Ojas","HCL","Wipro","Info-tech","CapGemini","Persistant","Virtusa","Infosys"]
-	
+	*/
 	
 	
 	$scope.Selectors =["skills","totalExperience","availability"];
@@ -42,6 +42,40 @@ resourceApp.controller('customerresourcelistCtrl',["$scope","$state","$statePara
          var error = err;  
      });
  }
+	$scope.skillfunc= function(){
+ 		RAService.getskills().then(function(data){
+ 	        $scope.skills = data;
+ 	       
+ 	    });
+ 		}
+ 		$scope.companyfunc= function(){
+ 			RAService.getcompany().then(function(data){
+ 		        $scope.company = data;
+ 		       
+ 		    });
+ 			}
+ 		$scope.budgetfunc= function(){
+ 			RAService.getbudget().then(function(data){
+ 		        $scope.budget = data;
+ 		       
+ 		    });
+ 			}
+ 		$scope.experiencefunc=function(){
+ 		RAService.getexperience().then(function(data){
+ 		$scope.experience =data;
+ 		console.log($scope.experience)
+ 		})
+ 		}
+ 		$scope.locationfunc = function(){
+ 		RAService.getlocation().then(function(data){
+ 			$scope.location = data;
+ 		})
+ 		}
+ 		$scope.jobcategoryfunc = function(){
+ 		RAService.getjobCategory().then(function(data){
+ 			$scope.Jobc = data;
+ 		})
+ 		}
 	
 	$scope.statusResource = function(resource){
 		debugger;

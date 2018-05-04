@@ -39,7 +39,7 @@
       <a class="navbar-brand headername"><i class="fa fa-users headername" aria-hidden="true"></i>&nbsp;&nbsp;Resource Adda</a>
     </div>
     <ul class="nav navbar-nav pull-right">
-       <li ng-repeat="x in meneu"><a class="headername" ui-sref="{{x.uisref}}">{{x.headerName}}</a></li>
+       <li ng-repeat="x in meneu"><a ui-sref-active="active" class="headername" ui-sref="{{x.uisref}}">{{x.headerName}}</a></li>
         <li ng-controller="LoginCtrl"><a class="headername" href="#" ng-click="logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
