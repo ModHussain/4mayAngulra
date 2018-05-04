@@ -140,3 +140,49 @@ resourceApp.controller('vendorreqlistCtrl',
 						}
 					}
 				} ])
+				
+resourceApp.controller('vendorreqsummaryCtrl',["$scope","$rootScope","$state","$stateParams","RAService",function($scope,$rootScope,$state,$stateParams,RAService){
+    $scope.$on('$viewContentLoaded', function () {
+		$scope.postrequirement = {};
+       
+		 $scope.edit();
+        })
+		
+   
+	
+		
+        $scope.jobcategory = ["Java Developer","UI Developer","IDM Consultant","xgfhdfgh"];
+	    $scope.jobtype = ["contract","full-time","part-time","szdf"];
+	    $scope.jobRole = ["Fresher","Intern","Trainee","Junior Developer","Senior Developer","Project Lead"];
+	    $scope.joblocation= ["Bangalore","Chennai","Hyderabad","Pune","Itanagar","Dispur","Patna","Raipur","Panaji","Gandhinagar","Punjab","Shimla","Srinagar","Ranchi",
+        	"Thiruvananthapuram","Bhopal","Mumbai","Imphal","Shillong","Aizawl","Kohima","Bhubaneswar","Jaipur","Gangtok","Noida","Amaravathi","Agartala","Lucknow","Dehradun","Kolkata"];
+        $scope.experience = ["1-2 years","2-3 years","3-5 years","5-7 years","7-10 years"];
+		$scope.primaryskills = ["Java","JDBC","HTML5","CSS3","Javascript","AngularJS"];
+		$scope.Rate=["Hourly","Per-Day","Per-Week","Per-Month",];
+		$scope.skills=["java","jsp","servlets","Spring","Html","Css","Bootstrap","Angularjs","Nodejs","Php","Phyton","MySQL","MongoDB","Oracle","Sql Server"];
+		$scope.secondaryskills = ["Oracle","MYSQL","SQL Server","MongoDB","WebRTC","Web Socket"];
+        $scope.joining = ["Immediate","10-15 days","15-30 days","30-45 days","sf"];
+       
+        $scope.edit = function(){
+        	RAService.postareqGetById($stateParams.postId).then(function(data){
+					$scope.postrequirement = data;
+					console.log($scope.postrequirement.primarySkills);
+					console.log($scope.postrequirement);
+					$scope.postrequirement.primarySkills = $scope.postrequirement.primarySkills.split(',');
+					$scope.postrequirement.secondarySkills = $scope.postrequirement.secondarySkills.split(',');
+					console.log($scope.postrequirement.primarySkills);
+					console.log($scope.postrequirement.secondarySkills);
+					}),
+					function(err){
+						if(err){
+							$scope.errorMessage = err;
+						}else{
+							$scope.errorMessage = err;
+					   }   
+					}
+}
+
+  
+
+
+}]);
