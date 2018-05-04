@@ -1,0 +1,137 @@
+<div class="container-fluid m-t-50">
+	<div class="row sea">
+	  <div class="container">
+		<h4 style="color: #337ab7">Search Your Resource :</h4>
+		<div class="col-sm-3">
+			<input type="text" class="form-control" ng-model="search.skills"
+				placeholder="Skills">
+		</div>
+		<div class="col-sm-3">
+			<input type="text" class="form-control" ng-model="search.jobCategory"
+				placeholder="job Category">
+		</div>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" ng-model="search.city"
+				placeholder="Location">
+		</div>
+		<div class="col-sm-2">
+			<input type="text" class="form-control"
+				ng-model="search.totalExperience" placeholder="Experience">
+		</div>
+		<div class="col-sm-2">
+			<button type="button" class="btn btn-primary">
+				<i class="fa fa-search"></i>&nbsp;Search
+			</button>
+		</div>
+      </div>
+	</div>
+	<br>
+	<div class="container m-t-20">
+		<div class="row">
+			<div class="col-sm-3">		
+				<div>
+					<uib-accordion close-others="oneAtATime">
+
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Location">
+						<uib-accordion-heading> Location<i
+							class="pull-right glyphicon"
+							ng-class="{'glyphicon glyphicon-minus': status.Location, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+
+						<ul class=" list-group" ng-repeat="x in States">
+							<input type="checkbox">&nbsp;{{x}}
+						</ul>
+					</div>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Job ">
+						<uib-accordion-heading> Job Category <i
+							class="pull-right glyphicon"
+							ng-class="{'glyphicon glyphicon-minus': status.Job , 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="c in Jobc">
+							<input type="checkbox">&nbsp;{{c}}
+						</ul>
+					</div>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Skills">
+						<uib-accordion-heading> Skills <i
+							class="pull-right glyphicon"
+							ng-class="{'glyphicon glyphicon-minus': status.Skills, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="s in skills">
+							<input type="checkbox">&nbsp;{{s}}
+						</ul>
+					</div>
+					<div uib-accordion-group class="panel-default"
+						is-open="status.Experience">
+						<uib-accordion-heading> Experience <i
+							class="pull-right glyphicon"
+							ng-class="{'glyphicon glyphicon-minus': status.Experience, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="e in experience">
+							<input type="checkbox">&nbsp;{{e}}
+						</ul>
+					</div>
+
+					<div uib-accordion-group class="panel-default"
+						is-open="status.company">
+						<uib-accordion-heading> Top Vendors <i
+							class="pull-right glyphicon"
+							ng-class="{'glyphicon glyphicon-minus': status.company, 'glyphicon glyphicon-plus': !status.open}"></i>
+						</uib-accordion-heading>
+						<ul class=" list-group" ng-repeat="tc in company">
+							<input type="checkbox">&nbsp;{{tc}}
+						</ul>
+					</div>
+					<br>
+					<center>
+						<button type="submit" class=" btn primary ">Clear
+							filters</button>
+						<button type="submit" class=" btn primary ">Submit</button>
+					</center>
+				</div>
+
+			</div>			
+					<div class="col-sm-8">
+						<div ng-repeat="x in resourcelist | filter:search" class="box">
+						
+							
+							<div class="header-box">
+								<p>
+									{{x.jobCategory}}<span>-{{x.currentLocation}}({{x.totalExperience}})</span>
+								</p>
+							</div>
+							<div class="companyName-box">
+								<p>{{x.companyName}}
+								<p>
+							</div>
+							<div class="description-box">
+								<p><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;{{x.firstName}}</p>
+							</div>
+							<div class="description-box">
+								<p>
+									<span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;{{x.emailId}}&nbsp;<i
+										class="fa fa-mobile mobil" aria-hidden="true"></i>&nbsp;{{x.mobileNumber}}
+								</p>
+							</div>
+							<div class="description-box">
+								<p>{{x.description}}</p>
+							</div>
+							<div class="description-box">
+								<p>
+									<i class="glyphicon glyphicon-calendar"></i>{{x.availability}}
+								</p>
+							</div>
+							<div class="Skills-box">
+								<p>
+									Skills:{{x.primarySkills.toLowerCase()}}
+								</p>
+							</div>
+						</div>			
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+	

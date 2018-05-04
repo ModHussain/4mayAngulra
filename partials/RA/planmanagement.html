@@ -1,0 +1,35 @@
+<div class="container">
+<div class="row">
+	<center>
+		<h3 style="color: #000">List of Plans </h3>
+		<button class="btn btn-primary pull-right" ui-sref="RA.Planadd"><i class="fa fa-plus" ></i>&nbsp;Add New Plan</button>
+	</center>
+	</div>
+	<div class="row">
+	<div class="col-sm-2 alert alert-default" ng-repeat="plan in UserDetails">
+		<div class="panel panel-default ">
+			<div class="panel-heading">
+				<h4 class="text-center">
+					<i class="fa fa-rupee"></i>&nbsp;{{plan.rate}}
+				</h4>
+			</div>
+			<div class="panel-body">
+				<p class="text-center">{{plan.month}}</p>
+				<p class="text-center">{{plan.plus}}</p>
+				<p class="text-center">{{plan.vacancy}}</p>
+				<p class="text-center">{{plan.cv}}</p>
+				<p class="text-center">{{plan.email}}</p>
+
+			</div>
+			<div class="panel-footer">
+				<center>
+				
+				<button class="btn btn-primary"  ng-click="statusplan(plan)">{{plan.status}}</button>
+					<button class="btn btn-primary"  ui-sref="RA.updateplan({planId: plan._id})"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+				</center>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</div>
